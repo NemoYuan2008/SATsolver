@@ -39,6 +39,7 @@ void init(void) {
         while( (ch = getc(fp)) != '\n')
             continue;           //弃去一整行
     }   //运行到此，已经读取了字符p
+    getc(fp); getc(fp); getc(fp); getc(fp); //弃去cnf三个字母
     fscanf(fp, "%d", &boolCount);    //p后的第1个数值是布尔变元数量
     fscanf(fp, "%d", &clauseCount);  //p后的第2个数值是子句数量
 }
