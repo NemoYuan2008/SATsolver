@@ -9,6 +9,7 @@
  */
 
 int main(void) {
-    
+    fileIn();
+    listCreate();
     return 0;
 }
