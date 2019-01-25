@@ -30,7 +30,7 @@ void fileIn(void) {
 /*
  * 函数名称: init
  * 接受参数: void
- * 函数功能: 进行初始化，为cnf的存储做准备
+ * 函数功能: 进行初始化, 弃去文件中没有用的字符, 为cnf的存储做准备
  * 返回值: void
  */
 void init(void) {

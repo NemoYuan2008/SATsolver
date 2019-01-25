@@ -46,3 +46,49 @@ void listCreate(void) {
         }
     }
 }
+
+/*
+ * 函数名称: clauseDelete
+ * 接受参数: 指向待删除节点的前一个节点的指针
+ * 函数功能: 删除一个子句节点
+ * 返回值: void
+ */
+void clauseDelete(List & prev) {
+    List del = prev->nextClause;    //待删除的节点
+    prev->nextClause = del->nextClause;
+    free(del);
+    del = NULL;
+}
+
+/*
+ * 函数名称: literalDelete
+ * 接受参数: 指向待删除节点的前一个节点的指针
+ * 函数功能: 删除子句中的一个文字节点
+ * 返回值: void
+ */
+void literalDelete(List & prev) {
+    List del = prev->nextLiteral;   //待删除的节点
+    prev->nextLiteral = del->nextLiteral;
+    free(del);
+    del = NULL;
+}
+
+/*
+ * 函数名称: isEmptyClause
+ * 接受参数: 指向子句节点的指针
+ * 函数功能: 判断子句是否是空子句
+ * 返回值: 若是空子句返回true, 否则返回false
+ */
+bool isEmptyClause(List clause) {
+    return clause->nextLiteral ? false : true;
+}
+
+/*
+ * 函数名称: isSingleClause
+ * 接受参数: 指向非空子句节点的指针
+ * 函数功能: 判断非空子句是否是单子句
+ * 返回值: 若是单子句返回true, 否则返回false
+ */
+bool isSingleClause(List clause) {
+    return clause->nextLiteral->nextLiteral ? false : true;
+}

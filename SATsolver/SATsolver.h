@@ -17,8 +17,12 @@ extern int clauseCount;
 extern int boolCount;
 
 /* 函数原型 */
-void fileIn(void);          //fileIO.cpp
-void init(void);            //fileIO.cpp
-void listCreate(void);      //listOperate.cpp
+void fileIn(void);                  //fileIO.cpp
+void init(void);                    //fileIO.cpp
+void listCreate(void);              //listOperate.cpp
+void clauseDelete(List & prev);     //listOperate.cpp
+void literalDelete(List & prev);    //listOperate.cpp
+bool isEmptyClause(List clause);    //listOperate.cpp
+bool isSingleClause(List clause);   //listOperate.cpp
 
 #endif /* SATsolver_h */
