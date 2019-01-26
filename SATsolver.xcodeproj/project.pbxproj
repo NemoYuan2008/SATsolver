@@ -11,6 +11,7 @@
 		1CA54B1421FA0A0D0053B047 /* globalVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B1321FA0A0D0053B047 /* globalVar.cpp */; };
 		1CA54B1621FA0A9B0053B047 /* fileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B1521FA0A9B0053B047 /* fileIO.cpp */; };
 		1CA54B1821FA0F0F0053B047 /* listOperate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B1721FA0F0F0053B047 /* listOperate.cpp */; };
+		1CA9D9B921FB15F900B229F3 /* solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA9D9B821FB15F900B229F3 /* solver.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,7 @@
 		1CA54B1321FA0A0D0053B047 /* globalVar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = globalVar.cpp; sourceTree = "<group>"; };
 		1CA54B1521FA0A9B0053B047 /* fileIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fileIO.cpp; sourceTree = "<group>"; };
 		1CA54B1721FA0F0F0053B047 /* listOperate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = listOperate.cpp; sourceTree = "<group>"; };
+		1CA9D9B821FB15F900B229F3 /* solver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = solver.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				1CA54B1321FA0A0D0053B047 /* globalVar.cpp */,
 				1CA54B1521FA0A9B0053B047 /* fileIO.cpp */,
 				1CA54B1721FA0F0F0053B047 /* listOperate.cpp */,
+				1CA9D9B821FB15F900B229F3 /* solver.cpp */,
 			);
 			path = SATsolver;
 			sourceTree = "<group>";
@@ -129,6 +132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CA9D9B921FB15F900B229F3 /* solver.cpp in Sources */,
 				1CA54B1821FA0F0F0053B047 /* listOperate.cpp in Sources */,
 				1CA54B1421FA0A0D0053B047 /* globalVar.cpp in Sources */,
 				1CA54B0C21FA071B0053B047 /* main.cpp in Sources */,

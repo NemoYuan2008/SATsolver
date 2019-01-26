@@ -1,6 +1,13 @@
 #ifndef SATsolver_h
 #define SATsolver_h
 
+/*
+ * 函数名称:
+ * 接受参数:
+ * 函数功能:
+ * 返回值:
+ */
+
 /* 存储结构声明 */
 typedef struct LNode {
     union {
@@ -12,21 +19,22 @@ typedef struct LNode {
 
 /* 全局变量引用声明 */
 extern List head;
+extern List headBackup;
 extern FILE * fp;
 extern int clauseCount;
 extern int boolCount;
 extern bool * value;
 
 /* 函数原型 */
-void fileIn(void);                  //fileIO.cpp
-void init(void);                    //fileIO.cpp
-void listCreate(void);              //listOperate.cpp
-void clauseDelete(List & prev);     //listOperate.cpp
-void literalDelete(List & prev);    //listOperate.cpp
-void clauseInsert(List ins);        //listOperate.cpp
-bool isEmptyClause(List clause);    //listOperate.cpp
-bool isSingleClause(List clause);   //listOperate.cpp
-bool DPLL(void);                    //solver.cpp
-bool simplify(int x);               //solver.cpp
+void fileIn(void);                              //fileIO.cpp
+void init(void);                                //fileIO.cpp
+void listCreate(void);                          //listOperate.cpp
+void listCopy(List & dest, const List src);     //listOperate.cpp
+void clauseDelete(List & prev);                 //listOperate.cpp
+void literalDelete(List & prev);                //listOperate.cpp
+bool isEmptyClause(List clause);                //listOperate.cpp
+bool isSingleClause(List clause);               //listOperate.cpp
+bool DPLL(void);                                //solver.cpp
+bool simplify(int x);                           //solver.cpp
 
 #endif /* SATsolver_h */

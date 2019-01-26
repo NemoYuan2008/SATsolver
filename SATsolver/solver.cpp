@@ -26,7 +26,7 @@ bool DPLL(void) {
             
             if (!simplify(x))   //化简后有空子句
                 return false;
-            if (!clauseCount)   //子句已经全部被满足
+            if (!head->nextClause)   //子句已经全部被满足
                 return true;
         }//if
     }//while

@@ -48,6 +48,64 @@ void listCreate(void) {
 }
 
 /*
+ * 函数名称: listCopy
+ * 接受参数: 两个List类型的指针dest, src
+ * 函数功能: 将src指向的十字链表拷贝到dest
+ * 返回值: void
+ */
+void listCopy(List & dest, const List src) {
+    List clauseTailDest, literalTailDest;   //目的地的尾指针
+    List clauseTailSrc, literalTailSrc;     //源的尾指针
+    
+    dest = (List)malloc(sizeof(LNode));
+    dest->nextClause = NULL;
+    dest->nextLiteral = NULL;
+    clauseTailDest = dest;
+    clauseTailSrc = src;
+    while (clauseTailSrc->nextClause) {
+        clauseTailSrc = clauseTailSrc->nextClause;
+        clauseTailDest->nextClause = (List)malloc(sizeof(LNode));
+        clauseTailDest = clauseTailDest->nextClause;
+        clauseTailDest->nextClause = NULL;
+        clauseTailDest->nextLiteral = NULL;
+        
+        literalTailDest = clauseTailDest;
+        literalTailSrc = clauseTailSrc;
+        while (literalTailSrc->nextLiteral) {
+            literalTailSrc = literalTailSrc->nextLiteral;
+            literalTailDest->nextLiteral = (List)malloc(sizeof(LNode));
+            literalTailDest = literalTailDest->nextLiteral;
+            literalTailDest->nextLiteral = NULL;
+            literalTailDest->literal = literalTailSrc->literal;
+        }
+    }
+}
+
+/*
+ * 函数名称: listDestroy
+ * 接受参数: List类型的指针delHead
+ * 函数功能: 销毁del指向的十字链表
+ * 返回值: void
+ */
+void listDestroy(List & delHead) {
+    List clauseTail, literalTail;  //尾指针
+    while (delHead->nextClause) {   //从第一个子句开始销毁每一个子句
+        clauseTail = delHead->nextClause;
+        while (clauseTail->nextLiteral) {   //从第一个文字开始销毁每一个文字
+            literalTail = clauseTail->nextLiteral;
+            clauseTail->nextLiteral = literalTail->nextLiteral;
+            free(literalTail);
+            literalTail = NULL;
+        }
+        delHead->nextClause = clauseTail->nextClause;
+        free(clauseTail);
+        clauseTail = NULL;
+    }
+    free(delHead);
+    delHead = NULL;
+}
+
+/*
  * 函数名称: clauseDelete
  * 接受参数: 指向待删除节点的前一个节点的指针
  * 函数功能: 删除一个子句节点
@@ -72,17 +130,6 @@ void literalDelete(List & prev) {
     prev->nextLiteral = del->nextLiteral;
     free(del);
     del = NULL;
-}
-
-/*
- * 函数名称: clauseInsert
- * 接受参数: 指向子句节点的指针
- * 函数功能: 将该子句节点插入到head的后面
- * 返回值: void
- */
-void clauseInsert(List ins) {
-    ins->nextClause = head->nextClause;
-    head->nextClause = ins;
 }
 
 /*
