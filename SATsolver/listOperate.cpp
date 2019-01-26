@@ -43,9 +43,9 @@ void listCreate(void) {
             literalTail->nextLiteral = NULL;
             literalTail->literal = literal;     //将输入值拷贝到节点
             fscanf(fp, "%d", &literal);
-        }
-    }
-}
+        }//while
+    }//for
+}//listCreate
 
 /*
  * 函数名称: listCopy
@@ -77,9 +77,9 @@ void listCopy(List & dest, const List src) {
             literalTailDest = literalTailDest->nextLiteral;
             literalTailDest->nextLiteral = NULL;
             literalTailDest->literal = literalTailSrc->literal;
-        }
-    }
-}
+        }//while
+    }//while
+}//listCopy
 
 /*
  * 函数名称: listDestroy
@@ -103,6 +103,21 @@ void listDestroy(List & delHead) {
     }
     free(delHead);
     delHead = NULL;
+}
+
+/*
+ * 函数名称: clauseInsert
+ * 接受参数: 整数x(代表一个布尔变元)
+ * 函数功能: 将该变元构成的单子句插入到十字链表的第一项
+ * 返回值: void
+ */
+void clauseInsert(int x) {
+    List ins = (List)malloc(sizeof(LNode));
+    ins->nextClause = head->nextClause;
+    ins->nextLiteral = (List)malloc(sizeof(LNode));
+    ins->nextLiteral->literal = x;
+    ins->nextLiteral->nextLiteral = NULL;
+    head->nextClause = ins;
 }
 
 /*

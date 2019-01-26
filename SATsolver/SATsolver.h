@@ -35,6 +35,9 @@ void literalDelete(List & prev);                //listOperate.cpp
 bool isEmptyClause(List clause);                //listOperate.cpp
 bool isSingleClause(List clause);               //listOperate.cpp
 bool DPLL(void);                                //solver.cpp
+bool satisfied(void);
+bool simplifySingleClause(void);
 bool simplify(int x);                           //solver.cpp
+int varDecide(void);
 
 #endif /* SATsolver_h */

@@ -11,12 +11,39 @@
 
 bool DPLL(void) {
     int x;
+    while (1) {
+        if (!simplifySingleClause())
+            return false;
+        if (satisfied())
+            return true;
+        
+        x = varDecide();
+    }
+}//DPLL
+
+/*
+ * 函数名称: satisfied
+ * 接受参数: void
+ * 函数功能: 判断SAT是否已满足
+ * 返回值: 若是返回true, 否则返回false
+ */
+bool satisfied(void) {
+    return head->nextClause ? false : true;
+}
+
+/*
+ * 函数名称: checkSingleClause
+ * 接受参数: void
+ * 函数功能: 检查head中是否有单子句, 若有则利用规则化简
+ * 返回值: 若化简后有空子句, 则返回false, 否则返回true
+ */
+bool simplifySingleClause(void) {
+    int x;
     List prev, tail;
     tail = head;
-    while (tail->nextClause) {  //单子句传播
+    while (tail->nextClause) {
         prev = tail;
         tail = tail->nextClause;
-        
         if (isSingleClause(tail)) {
             x = tail->nextLiteral->literal;
             if (x > 0)
@@ -24,14 +51,19 @@ bool DPLL(void) {
             else
                 value[-x-1] = false;
             
-            if (!simplify(x))   //化简后有空子句
+            if(!simplify(x))    //化简后有空子句
                 return false;
-            if (!head->nextClause)   //子句已经全部被满足
-                return true;
-        }//if
-    }//while
-}//DPLL
+        }
+    }
+    return true;
+}
 
+/*
+ * 函数名称: simplify
+ * 接受参数: 整数x, x为单子句变元
+ * 函数功能: 利用x简化问题
+ * 返回值: 若简化之后存在空子句, 返回false, 否则返回true
+ */
 bool simplify(int x) {
     bool checkFlag;     //指示是否需要检查空子句
     List clauseTail, clausePrev, literalTail, literalPrev;
@@ -68,4 +100,12 @@ bool simplify(int x) {
     return true;
 }//simplify
 
-
+/*
+ * 函数名称: varDecide
+ * 接受参数: void
+ * 函数功能: 进行变元决策
+ * 返回值: 决策出的变元, 若为真则为正数, 否则为负数
+ */
+int varDecide(void) {
+    return head->nextClause->nextLiteral->literal;
+}

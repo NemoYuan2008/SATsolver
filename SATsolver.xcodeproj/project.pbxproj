@@ -66,8 +66,8 @@
 		1CA54B0A21FA071B0053B047 /* SATsolver */ = {
 			isa = PBXGroup;
 			children = (
-				1CA54B0B21FA071B0053B047 /* main.cpp */,
 				1CA54B1221FA074C0053B047 /* SATsolver.h */,
+				1CA54B0B21FA071B0053B047 /* main.cpp */,
 				1CA54B1321FA0A0D0053B047 /* globalVar.cpp */,
 				1CA54B1521FA0A9B0053B047 /* fileIO.cpp */,
 				1CA54B1721FA0F0F0053B047 /* listOperate.cpp */,
