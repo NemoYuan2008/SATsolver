@@ -14,3 +14,4 @@ List head;          //头节点指针
 FILE * fp;          //文件指针
 int clauseCount;    //当前子句数量
 int boolCount;      //布尔变元数量
+bool * value;       //存放布尔变元的值, 在init()中被分配空间

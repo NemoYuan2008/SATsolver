@@ -20,7 +20,7 @@ void listCreate(void) {
     List clauseTail, literalTail;   //尾指针
     int literal;                    //临时存放从文件中输入的子句的值
     init();                         //先进行初始化
-    if ( !( head = (List)malloc(sizeof(Node)) ) ) {
+    if ( !( head = (List)malloc(sizeof(LNode)) ) ) {
         printf("内存分配失败!\n");
         exit(EXIT_FAILURE);
     }
@@ -30,7 +30,7 @@ void listCreate(void) {
     
     //创建数量为clauseCount的子句, i为计数器
     for (int i = 0; i < clauseCount; i++) {
-        clauseTail->nextClause = (List)malloc(sizeof(Node));
+        clauseTail->nextClause = (List)malloc(sizeof(LNode));
         clauseTail = clauseTail->nextClause;
         clauseTail->nextClause = NULL;
         
@@ -38,7 +38,7 @@ void listCreate(void) {
         literalTail = clauseTail;
         fscanf(fp, "%d", &literal);
         while (literal != 0) {
-            literalTail->nextLiteral = (List)malloc(sizeof(Node));
+            literalTail->nextLiteral = (List)malloc(sizeof(LNode));
             literalTail = literalTail->nextLiteral;
             literalTail->nextLiteral = NULL;
             literalTail->literal = literal;     //将输入值拷贝到节点
@@ -58,6 +58,7 @@ void clauseDelete(List & prev) {
     prev->nextClause = del->nextClause;
     free(del);
     del = NULL;
+    clauseCount--;      //当前子句数量减1
 }
 
 /*
@@ -71,6 +72,17 @@ void literalDelete(List & prev) {
     prev->nextLiteral = del->nextLiteral;
     free(del);
     del = NULL;
+}
+
+/*
+ * 函数名称: clauseInsert
+ * 接受参数: 指向子句节点的指针
+ * 函数功能: 将该子句节点插入到head的后面
+ * 返回值: void
+ */
+void clauseInsert(List ins) {
+    ins->nextClause = head->nextClause;
+    head->nextClause = ins;
 }
 
 /*

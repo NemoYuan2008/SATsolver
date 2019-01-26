@@ -42,4 +42,6 @@ void init(void) {
     getc(fp); getc(fp); getc(fp); getc(fp); //弃去cnf三个字母
     fscanf(fp, "%d", &boolCount);    //p后的第1个数值是布尔变元数量
     fscanf(fp, "%d", &clauseCount);  //p后的第2个数值是子句数量
+    
+    value = (bool *)calloc(boolCount, sizeof(bool));    //为value分配空间
 }
