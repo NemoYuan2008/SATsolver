@@ -17,9 +17,15 @@ typedef struct LNode {
     struct LNode * nextLiteral;      //指向下一个文字
 } LNode, *List;
 
+typedef struct Snode {
+    List data;
+    struct Snode * next;
+} Snode, * Stack;   //链式堆栈
+
 /* 全局变量引用声明 */
 extern List head;
 extern List headBackup;
+extern Stack top;
 extern FILE * fp;
 extern int clauseCount;
 extern int boolCount;
@@ -39,5 +45,10 @@ bool satisfied(void);
 bool simplifySingleClause(void);
 bool simplify(int x);                           //solver.cpp
 int varDecide(void);
+void stackInit(void);
+bool stackEmpty(void);
+void push(List x);
+List pop(void);
+void stackDestroy(void);
 
 #endif /* SATsolver_h */

@@ -12,6 +12,7 @@
 
 List head;          //头节点指针
 List headBackup;    //存放备份
+Stack top;          //链式堆栈栈顶指针
 FILE * fp;          //文件指针
 int clauseCount;    //当前子句数量
 int boolCount;      //布尔变元数量

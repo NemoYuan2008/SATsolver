@@ -11,13 +11,17 @@
 
 bool DPLL(void) {
     int x;
+    List backup;
     while (1) {
         if (!simplifySingleClause())
             return false;
         if (satisfied())
             return true;
         
+        listCopy(backup, head);     //将原有的十字链表备份并压栈
+        push(backup);
         x = varDecide();
+        
     }
 }//DPLL
 
