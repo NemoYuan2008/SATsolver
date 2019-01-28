@@ -13,17 +13,19 @@
 void stackInit(void) {
     top = (Stack)malloc(sizeof(Snode));
     top->next = NULL;
+    top->data = NULL;
 }
 
 bool stackEmpty(void) {
     return top->next ? false : true;
 }
 
-void push(List x) {
+void push(List backup, int x) {
     Stack ins = (Stack)malloc(sizeof(Snode));
-    ins->data = x;
+    ins->data = backup;
+    ins->x = x;
     ins->next = top;
-    top->next = ins;
+    top = ins;
 }
 
 List pop(void) {

@@ -18,13 +18,13 @@ typedef struct LNode {
 } LNode, *List;
 
 typedef struct Snode {
+    int x;
     List data;
     struct Snode * next;
 } Snode, * Stack;   //链式堆栈
 
 /* 全局变量引用声明 */
 extern List head;
-extern List headBackup;
 extern Stack top;
 extern FILE * fp;
 extern int clauseCount;
@@ -36,6 +36,8 @@ void fileIn(void);                              //fileIO.cpp
 void init(void);                                //fileIO.cpp
 void listCreate(void);                          //listOperate.cpp
 void listCopy(List & dest, const List src);     //listOperate.cpp
+void listDestroy(List & delHead);
+void clauseInsert(int x);
 void clauseDelete(List & prev);                 //listOperate.cpp
 void literalDelete(List & prev);                //listOperate.cpp
 bool isEmptyClause(List clause);                //listOperate.cpp
@@ -47,7 +49,7 @@ bool simplify(int x);                           //solver.cpp
 int varDecide(void);
 void stackInit(void);
 bool stackEmpty(void);
-void push(List x);
+void push(List backup, int x);
 List pop(void);
 void stackDestroy(void);
 

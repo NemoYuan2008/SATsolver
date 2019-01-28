@@ -10,18 +10,42 @@
 #include "SATsolver.h"
 
 bool DPLL(void) {
-    int x;
+    int x = 0;
+    bool backTrack = false;
     List backup;
+    if (!simplifySingleClause())
+        return false;
+    if (satisfied())
+        return true;
+    
     while (1) {
-        if (!simplifySingleClause())
-            return false;
-        if (satisfied())
-            return true;
-        
-        listCopy(backup, head);     //将原有的十字链表备份并压栈
-        push(backup);
-        x = varDecide();
-        
+        if (!backTrack)
+            x = varDecide();
+        listCopy(backup, head);
+        push(backup, x);
+        clauseInsert(x);
+        if (!simplifySingleClause()) {
+            if (!backTrack) {
+                x = -x;
+                listDestroy(head);
+                head = pop();
+                backTrack = true;
+            } else {
+                listDestroy(head);
+                head = pop();
+                listDestroy(head);
+                if (stackEmpty())
+                    return false;
+                else {
+                    x = -(top->x);
+                    head = pop();
+                }
+            }
+        } else {
+            backTrack = false;
+            if (satisfied())
+                return true;
+        }
     }
 }//DPLL
 
@@ -57,6 +81,7 @@ bool simplifySingleClause(void) {
             
             if(!simplify(x))    //化简后有空子句
                 return false;
+            tail = prev;        //tail被删了, 要重新指向
         }
     }
     return true;
@@ -87,13 +112,14 @@ bool simplify(int x) {
             
             if (literalTail->literal == x) {
                 clauseDelete(clausePrev);       //删除这个子句
-                clauseTail = clausePrev->nextClause;    //clauseTail被删除了, 要指向下一个子句
-                if (!clauseTail)
+                clauseTail = clausePrev;    //clauseTail被删除了, 要重新指向
+                if (!(clauseTail->nextClause))
                     return true;                //已经遍历到了最后一个子句
-                break;  //停止遍历这个子句到文字, 继续从下一个子句开始遍历
+                break;  //停止遍历这个子句的文字, 继续从下一个子句开始遍历
             }//if
             else if (literalTail->literal == -x) {
                 literalDelete(literalPrev);     //从子句中删除这个文字
+                literalTail = literalPrev;
                 checkFlag = true;               //如果子句中删除了文字则需要检查该子句是否为空
             }//elif
             

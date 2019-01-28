@@ -45,6 +45,7 @@ void listCreate(void) {
             fscanf(fp, "%d", &literal);
         }//while
     }//for
+    fclose(fp);
 }//listCreate
 
 /*
