@@ -5,7 +5,8 @@ int main(void) {
     fileIn();
     listCreate();
     stackInit();
-    DPLL();
+    if(!DPLL())
+        return -1;
     for (int i = 0; i < boolCount; i++) {
         printf("%d", value[i]);
     }

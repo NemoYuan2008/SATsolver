@@ -81,7 +81,7 @@ bool simplifySingleClause(void) {
             
             if(!simplify(x))    //化简后有空子句
                 return false;
-            tail = prev;        //tail被删了, 要重新指向
+            tail = head;        //从头开始重新搜索单子句
         }
     }
     return true;
