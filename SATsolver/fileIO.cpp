@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "SATsolver.h"
 
 /*
@@ -19,14 +20,13 @@
  * 返回值: void
  */
 void fileIn(void) {
-    char fileName[200];
     printf("输入要读取的cnf文件:");
     scanf("%s", fileName);
     if ( !(fp = fopen(fileName, "r")) ) {
         fprintf(stderr, "文件打开失败!\n");
         exit(EXIT_FAILURE);
     }
-    printf("文件打开成功!\n");
+    printf("文件打开成功!\n正在求解...\n");
 }
 
 /*
@@ -46,4 +46,31 @@ void init(void) {
     fscanf(fp, "%d", &clauseCount);  //p后的第2个数值是子句数量
     
     value = (bool *)calloc(boolCount, sizeof(bool));    //为value分配空间
+}
+
+/*
+ * 函数名称: fileOut
+ * 接受参数: 指示是否有解的布尔值solved
+ * 函数功能: 将求解结果写入文件中
+ * 返回值: void
+ */
+void fileOut(bool solved) {
+    strcat(fileName, ".res");   //输出保存在后缀.res的同名文件中
+    fp = fopen(fileName, "w");
+    if (!fp) {
+        fprintf(stderr, "文件写入失败!\n");
+        exit(EXIT_FAILURE);
+    }
+    fprintf(fp, "s ");
+    if (solved) {
+        fprintf(fp, "1\n");
+        for (int i = 1; i < boolCount; i++) {
+            fprintf(fp, "%d ", value[i] ? i : -i);
+        }//for
+    } else {
+        fprintf(fp, "0");
+    }//else
+    fprintf(fp, "\nt %d\n", timeConsumed);
+    fclose(fp);
+    printf("结果已经成功写入到文件%s中\n", fileName);
 }

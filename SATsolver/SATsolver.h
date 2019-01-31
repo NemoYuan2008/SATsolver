@@ -9,6 +9,9 @@
 #ifndef SATsolver_h
 #define SATsolver_h
 
+#include <stdio.h>      //提供FILE *类型
+#include <time.h>       //提供clock_t类型
+
 /*
  * 函数名称:
  * 接受参数:
@@ -35,13 +38,16 @@ typedef struct Snode {
 extern List head;
 extern Stack top;
 extern FILE * fp;
+extern char fileName[200];
 extern int clauseCount;
 extern int boolCount;
 extern bool * value;
+extern int timeConsumed;
 
 /* 函数原型 */
 void fileIn(void);                              //fileIO.cpp
 void init(void);                                //fileIO.cpp
+void fileOut(bool solved);
 void listCreate(void);                          //listOperate.cpp
 void listCopy(List & dest, const List src);     //listOperate.cpp
 void listDestroy(List & delHead);               //listOperate.cpp
@@ -60,5 +66,8 @@ bool stackEmpty(void);                          //stack.cpp
 void push(List backup, int x);                  //stack.cpp
 List pop(void);                                 //stack.cpp
 void stackDestroy(void);                        //stack.cpp
+void displayMenu(void);
+void displayResult(bool solved);
+void timeCal(clock_t t1, clock_t t2);
 
 #endif /* SATsolver_h */

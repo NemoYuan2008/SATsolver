@@ -14,6 +14,8 @@
 List head;          //头节点指针
 Stack top;          //链式堆栈栈顶指针
 FILE * fp;          //文件指针
+char fileName[200]; //文件名
 int clauseCount;    //当前子句数量
 int boolCount;      //布尔变元数量
 bool * value;       //存放布尔变元的值, 在init()中被分配空间
+int timeConsumed;   //DPLL过程用时, 以毫秒为单位

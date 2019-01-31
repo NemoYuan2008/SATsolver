@@ -13,6 +13,8 @@
 		1CA54B1621FA0A9B0053B047 /* fileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B1521FA0A9B0053B047 /* fileIO.cpp */; };
 		1CA54B1821FA0F0F0053B047 /* listOperate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B1721FA0F0F0053B047 /* listOperate.cpp */; };
 		1CA9D9B921FB15F900B229F3 /* solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA9D9B821FB15F900B229F3 /* solver.cpp */; };
+		1CDBA8B22203166D00EC8B75 /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CDBA8B12203166D00EC8B75 /* display.cpp */; };
+		1CDBA8B422031AB900EC8B75 /* timeCal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CDBA8B322031AB900EC8B75 /* timeCal.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +38,8 @@
 		1CA54B1521FA0A9B0053B047 /* fileIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fileIO.cpp; sourceTree = "<group>"; };
 		1CA54B1721FA0F0F0053B047 /* listOperate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = listOperate.cpp; sourceTree = "<group>"; };
 		1CA9D9B821FB15F900B229F3 /* solver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = solver.cpp; sourceTree = "<group>"; };
+		1CDBA8B12203166D00EC8B75 /* display.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = display.cpp; sourceTree = "<group>"; };
+		1CDBA8B322031AB900EC8B75 /* timeCal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = timeCal.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				1CA54B1721FA0F0F0053B047 /* listOperate.cpp */,
 				1CA9D9B821FB15F900B229F3 /* solver.cpp */,
 				1C9D9E9021FC94E9003A84B9 /* stack.cpp */,
+				1CDBA8B12203166D00EC8B75 /* display.cpp */,
+				1CDBA8B322031AB900EC8B75 /* timeCal.cpp */,
 			);
 			path = SATsolver;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 				1CA9D9B921FB15F900B229F3 /* solver.cpp in Sources */,
 				1CA54B1821FA0F0F0053B047 /* listOperate.cpp in Sources */,
 				1CA54B1421FA0A0D0053B047 /* globalVar.cpp in Sources */,
+				1CDBA8B422031AB900EC8B75 /* timeCal.cpp in Sources */,
 				1CA54B0C21FA071B0053B047 /* main.cpp in Sources */,
+				1CDBA8B22203166D00EC8B75 /* display.cpp in Sources */,
 				1C9D9E9121FC94E9003A84B9 /* stack.cpp in Sources */,
 				1CA54B1621FA0A9B0053B047 /* fileIO.cpp in Sources */,
 			);
