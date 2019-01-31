@@ -5,13 +5,21 @@
 //  Created by 袁博实 on 2019/1/25.
 //  Copyright © 2019 袁博实. All rights reserved.
 //
+//  求解器核心模块
+//
 
 #include <stdio.h>
 #include "SATsolver.h"
 
+/*
+ * 函数名称: DPLL
+ * 接受参数: void
+ * 函数功能: 运行DPLL算法以求解SAT问题, 解保存在*value中
+ * 返回值: 若可满足返回true, 不可满足返回false
+ */
 bool DPLL(void) {
     int x = 0;
-    bool backTrack = false;
+    bool backTrack = false;         //指示当前是否在回溯
     List backup;
     if (!simplifySingleClause())
         return false;
@@ -21,18 +29,16 @@ bool DPLL(void) {
     while (1) {
         if (!backTrack)
             x = varDecide();
-        listCopy(backup, head);
+        listCopy(backup, head);     //将head备份起来
         push(backup, x);
-        clauseInsert(x);
-        if (!simplifySingleClause()) {
+        clauseInsert(x);        //令x为真, 进行化简
+        if (!simplifySingleClause()) {  //化简后有空子句, 需要回溯
+            listDestroy(head);
+            head = pop();       //将head恢复为之前的状态
             if (!backTrack) {
                 x = -x;
-                listDestroy(head);
-                head = pop();
                 backTrack = true;
             } else {
-                listDestroy(head);
-                head = pop();
                 listDestroy(head);
                 if (stackEmpty())
                     return false;
@@ -41,12 +47,12 @@ bool DPLL(void) {
                     head = pop();
                 }
             }
-        } else {
+        } else {    //化简后没有空子句
             backTrack = false;
             if (satisfied())
                 return true;
         }
-    }
+    }//while
 }//DPLL
 
 /*
@@ -60,7 +66,7 @@ bool satisfied(void) {
 }
 
 /*
- * 函数名称: checkSingleClause
+ * 函数名称: simplifySingleClause
  * 接受参数: void
  * 函数功能: 检查head中是否有单子句, 若有则利用规则化简
  * 返回值: 若化简后有空子句, 则返回false, 否则返回true

@@ -6,6 +6,7 @@
 //  Copyright © 2019 袁博实. All rights reserved.
 //
 //  声明全局变量
+//
 
 #include <stdio.h>
 #include "SATsolver.h"

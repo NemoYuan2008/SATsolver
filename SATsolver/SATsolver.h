@@ -1,3 +1,11 @@
+//
+//  SATsolver.h
+//  SATsolver
+//
+//  Created by 袁博实 on 2019/1/24.
+//  Copyright © 2019 袁博实. All rights reserved.
+//
+
 #ifndef SATsolver_h
 #define SATsolver_h
 
@@ -36,21 +44,21 @@ void fileIn(void);                              //fileIO.cpp
 void init(void);                                //fileIO.cpp
 void listCreate(void);                          //listOperate.cpp
 void listCopy(List & dest, const List src);     //listOperate.cpp
-void listDestroy(List & delHead);
-void clauseInsert(int x);
+void listDestroy(List & delHead);               //listOperate.cpp
+void clauseInsert(int x);                       //listOperate.cpp
 void clauseDelete(List & prev);                 //listOperate.cpp
 void literalDelete(List & prev);                //listOperate.cpp
 bool isEmptyClause(List clause);                //listOperate.cpp
 bool isSingleClause(List clause);               //listOperate.cpp
 bool DPLL(void);                                //solver.cpp
-bool satisfied(void);
-bool simplifySingleClause(void);
+bool satisfied(void);                           //solver.cpp
+bool simplifySingleClause(void);                //solver.cpp
 bool simplify(int x);                           //solver.cpp
-int varDecide(void);
-void stackInit(void);
-bool stackEmpty(void);
-void push(List backup, int x);
-List pop(void);
-void stackDestroy(void);
+int varDecide(void);                            //solver.cpp
+void stackInit(void);                           //stack.cpp
+bool stackEmpty(void);                          //stack.cpp
+void push(List backup, int x);                  //stack.cpp
+List pop(void);                                 //stack.cpp
+void stackDestroy(void);                        //stack.cpp
 
 #endif /* SATsolver_h */

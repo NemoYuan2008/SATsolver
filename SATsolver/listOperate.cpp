@@ -5,6 +5,8 @@
 //  Created by 袁博实 on 2019/1/24.
 //  Copyright © 2019 袁博实. All rights reserved.
 //
+//  邻接表操作模块
+//
 
 #include <stdio.h>
 #include <stdlib.h>

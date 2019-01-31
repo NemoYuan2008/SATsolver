@@ -5,6 +5,8 @@
 //  Created by 袁博实 on 2019/1/24.
 //  Copyright © 2019 袁博实. All rights reserved.
 //
+//  文件输入输出模块
+//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +19,7 @@
  * 返回值: void
  */
 void fileIn(void) {
-    char fileName[50];
+    char fileName[200];
     printf("输入要读取的cnf文件:");
     scanf("%s", fileName);
     if ( !(fp = fopen(fileName, "r")) ) {
