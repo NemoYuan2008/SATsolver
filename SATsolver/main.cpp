@@ -30,16 +30,18 @@ int main(void) {
                 timeCal(t1, t2);
                 displayResult(solved);
                 fileOut(solved);
+                printf("按任意键继续...");
                 getchar();getchar();
                 break;
             case 2:
                 printf("数独部分待完成!\n");
+                printf("按任意键继续...");
                 getchar();getchar();
                 break;
             case 0:
                 break;
             default:
-                printf("输入错误, 请重试!\n");
+                printf("输入错误, 按任意键继续...");
                 getchar();getchar();
                 break;
         }

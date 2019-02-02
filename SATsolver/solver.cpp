@@ -27,14 +27,27 @@ bool DPLL(void) {
         return true;
     
     while (1) {
+#ifdef testing
+        printList(head);
+#endif
         if (!backTrack)
             x = varDecide();
         listCopy(backup, head);     //将head备份起来
         push(backup, x);
         clauseInsert(x);        //令x为真, 进行化简
+#ifdef testing
+        printList(head);
+        printList(top->data);
+#endif
         if (!simplifySingleClause()) {  //化简后有空子句, 需要回溯
+#ifdef testing
+            printList(head);
+#endif
             listDestroy(head);
             head = pop();       //将head恢复为之前的状态
+#ifdef testing
+            printList(head);
+#endif
             if (!backTrack) {
                 x = -x;
                 backTrack = true;
@@ -45,9 +58,15 @@ bool DPLL(void) {
                 else {
                     x = -(top->x);
                     head = pop();
+#ifdef testing
+                    printList(head);
+#endif
                 }
             }
         } else {    //化简后没有空子句
+#ifdef testing
+            printList(head);
+#endif
             backTrack = false;
             if (satisfied())
                 return true;

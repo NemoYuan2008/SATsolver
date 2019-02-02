@@ -12,6 +12,8 @@
 #include <stdio.h>      //提供FILE *类型
 #include <time.h>       //提供clock_t类型
 
+#define testing  /* 测试用代码, 正式发布时删除 */
+
 /*
  * 函数名称:
  * 接受参数:
@@ -42,12 +44,12 @@ extern char fileName[200];
 extern int clauseCount;
 extern int boolCount;
 extern bool * value;
-extern int timeConsumed;
+extern unsigned timeUsed;
 
 /* 函数原型 */
 void fileIn(void);                              //fileIO.cpp
 void init(void);                                //fileIO.cpp
-void fileOut(bool solved);
+void fileOut(bool solved);                      //fileIO.cpp
 void listCreate(void);                          //listOperate.cpp
 void listCopy(List & dest, const List src);     //listOperate.cpp
 void listDestroy(List & delHead);               //listOperate.cpp
@@ -66,8 +68,12 @@ bool stackEmpty(void);                          //stack.cpp
 void push(List backup, int x);                  //stack.cpp
 List pop(void);                                 //stack.cpp
 void stackDestroy(void);                        //stack.cpp
-void displayMenu(void);
-void displayResult(bool solved);
-void timeCal(clock_t t1, clock_t t2);
+void displayMenu(void);                         //display.cpp
+void displayResult(bool solved);                //display.cpp
+void timeCal(clock_t t1, clock_t t2);           //timeCal.cpp
+
+#ifdef testing
+void printList(List printHead);
+#endif
 
 #endif /* SATsolver_h */

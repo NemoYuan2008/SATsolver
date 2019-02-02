@@ -18,4 +18,4 @@ char fileName[200]; //文件名
 int clauseCount;    //当前子句数量
 int boolCount;      //布尔变元数量
 bool * value;       //存放布尔变元的值, 在init()中被分配空间
-int timeConsumed;   //DPLL过程用时, 以毫秒为单位
+unsigned timeUsed;  //DPLL过程用时, 以毫秒为单位

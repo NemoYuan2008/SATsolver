@@ -40,5 +40,5 @@ void displayResult(bool solved) {
     } else {
         printf("该SAT不可满足!\n");
     }
-    printf("DPLL过程用时:%d ms\n", timeConsumed);
+    printf("DPLL过程用时:%u ms\n", timeUsed);
 }

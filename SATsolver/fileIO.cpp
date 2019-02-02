@@ -70,7 +70,7 @@ void fileOut(bool solved) {
     } else {
         fprintf(fp, "0");
     }//else
-    fprintf(fp, "\nt %d\n", timeConsumed);
+    fprintf(fp, "\nt %u\n", timeUsed);
     fclose(fp);
     printf("结果已经成功写入到文件%s中\n", fileName);
 }
