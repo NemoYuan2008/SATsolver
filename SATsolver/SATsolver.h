@@ -32,6 +32,7 @@ typedef struct LNode {
 
 typedef struct Snode {
     int x;
+    bool backTrack;
     List data;
     struct Snode * next;
 } Snode, * Stack;   //链式堆栈
@@ -65,7 +66,7 @@ bool simplify(int x);                           //solver.cpp
 int varDecide(void);                            //solver.cpp
 void stackInit(void);                           //stack.cpp
 bool stackEmpty(void);                          //stack.cpp
-void push(List backup, int x);                  //stack.cpp
+void push(List backup, int x, bool backTrack);                  //stack.cpp
 List pop(void);                                 //stack.cpp
 void stackDestroy(void);                        //stack.cpp
 void displayMenu(void);                         //display.cpp

@@ -40,10 +40,11 @@ bool stackEmpty(void) {
  * 函数功能: 将backup和x入栈
  * 返回值: void
  */
-void push(List backup, int x) {
+void push(List backup, int x, bool backTrack) {
     Stack ins = (Stack)malloc(sizeof(Snode));
     ins->data = backup;
     ins->x = x;
+    ins->backTrack = backTrack;
     ins->next = top;
     top = ins;
 }

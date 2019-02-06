@@ -28,12 +28,12 @@ bool DPLL(void) {
     
     while (1) {
 #ifdef testing
-        printList(head);
+        printList(head); 
 #endif
         if (!backTrack)
             x = varDecide();
         listCopy(backup, head);     //将head备份起来
-        push(backup, x);
+        push(backup, x, backTrack);
         clauseInsert(x);        //令x为真, 进行化简
 #ifdef testing
         printList(head);
@@ -52,16 +52,16 @@ bool DPLL(void) {
                 x = -x;
                 backTrack = true;
             } else {
-                listDestroy(head);
-                if (stackEmpty())
-                    return false;
-                else {
-                    x = -(top->x);
+                while (top->backTrack) {    //找到没有回溯过的节点
+                    listDestroy(head);
                     head = pop();
-#ifdef testing
-                    printList(head);
-#endif
+                    if (stackEmpty())
+                        return false;
                 }
+                listDestroy(head);
+                x = -(top->x);
+                head = pop();
+                backTrack = true;
             }
         } else {    //化简后没有空子句
 #ifdef testing
@@ -92,10 +92,9 @@ bool satisfied(void) {
  */
 bool simplifySingleClause(void) {
     int x;
-    List prev, tail;
+    List tail;
     tail = head;
     while (tail->nextClause) {
-        prev = tail;
         tail = tail->nextClause;
         if (isSingleClause(tail)) {
             x = tail->nextLiteral->literal;
