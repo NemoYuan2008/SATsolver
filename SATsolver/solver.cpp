@@ -18,7 +18,7 @@
  * 返回值: 若可满足返回true, 不可满足返回false
  */
 bool DPLL(void) {
-    int x = 0;
+    int x = 0;                      //当前决策到的布尔变元, 用正负表示真假
     bool backTrack = false;         //指示当前是否在回溯
     List backup;
     if (!simplifySingleClause())
@@ -27,32 +27,19 @@ bool DPLL(void) {
         return true;
     
     while (1) {
-#ifdef testing
-        printList(head); 
-#endif
         if (!backTrack)
             x = varDecide();
-        listCopy(backup, head);     //将head备份起来
+        listCopy(backup, head);         //将head备份起来
         push(backup, x, backTrack);
-        clauseInsert(x);        //令x为真, 进行化简
-#ifdef testing
-        printList(head);
-        printList(top->data);
-#endif
+        clauseInsert(x);                //令x为真, 进行化简
         if (!simplifySingleClause()) {  //化简后有空子句, 需要回溯
-#ifdef testing
-            printList(head);
-#endif
             listDestroy(head);
-            head = pop();       //将head恢复为之前的状态
-#ifdef testing
-            printList(head);
-#endif
-            if (!backTrack) {
-                x = -x;
+            head = pop();               //将head恢复为之前的状态
+            if (!backTrack) {           //若发生冲突前不是在回溯
+                x = -x;                 //则改变决策变元的真值
                 backTrack = true;
-            } else {
-                while (top->backTrack) {    //找到没有回溯过的节点
+            } else {                    //若发生冲突前是在回溯, 则需要
+                while (top->backTrack) {//一直向前, 找到没有回溯过的节点
                     listDestroy(head);
                     head = pop();
                     if (stackEmpty())
@@ -64,9 +51,6 @@ bool DPLL(void) {
                 backTrack = true;
             }
         } else {    //化简后没有空子句
-#ifdef testing
-            printList(head);
-#endif
             backTrack = false;
             if (satisfied())
                 return true;
@@ -102,7 +86,7 @@ bool simplifySingleClause(void) {
                 value[x-1] = true;
             else
                 value[-x-1] = false;
-            
+                                //利用单子句x化简
             if(!simplify(x))    //化简后有空子句
                 return false;
             tail = head;        //从头开始重新搜索单子句
@@ -118,13 +102,11 @@ bool simplifySingleClause(void) {
  * 返回值: 若简化之后存在空子句, 返回false, 否则返回true
  */
 bool simplify(int x) {
-    bool checkFlag;     //指示是否需要检查空子句
     List clauseTail, clausePrev, literalTail, literalPrev;
     clauseTail = head;
     
     //遍历所有的子句
     while (clauseTail->nextClause) {
-        checkFlag = false;
         clausePrev = clauseTail;
         clauseTail = clauseTail->nextClause;
         
@@ -144,11 +126,9 @@ bool simplify(int x) {
             else if (literalTail->literal == -x) {
                 literalDelete(literalPrev);     //从子句中删除这个文字
                 literalTail = literalPrev;
-                checkFlag = true;               //如果子句中删除了文字则需要检查该子句是否为空
+                if (isEmptyClause(clauseTail))  //如果子句中删除了文字则需要检查该子句是否为空
+                    return false;
             }//elif
-            
-            if (checkFlag && isEmptyClause(clauseTail))
-                return false;
         }//while
     }//while
     return true;

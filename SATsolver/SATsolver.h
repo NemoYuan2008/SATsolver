@@ -12,8 +12,6 @@
 #include <stdio.h>      //提供FILE *类型
 #include <time.h>       //提供clock_t类型
 
-#define testing  /* 测试用代码, 正式发布时删除 */
-
 /*
  * 函数名称:
  * 接受参数:
@@ -66,15 +64,11 @@ bool simplify(int x);                           //solver.cpp
 int varDecide(void);                            //solver.cpp
 void stackInit(void);                           //stack.cpp
 bool stackEmpty(void);                          //stack.cpp
-void push(List backup, int x, bool backTrack);                  //stack.cpp
+void push(List backup, int x, bool backTrack);  //stack.cpp
 List pop(void);                                 //stack.cpp
 void stackDestroy(void);                        //stack.cpp
 void displayMenu(void);                         //display.cpp
 void displayResult(bool solved);                //display.cpp
 void timeCal(clock_t t1, clock_t t2);           //timeCal.cpp
-
-#ifdef testing
-void printList(List printHead);
-#endif
 
 #endif /* SATsolver_h */

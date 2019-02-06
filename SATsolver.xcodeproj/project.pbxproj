@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C62240D2204A22D00E305CA /* testing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C62240C2204A22D00E305CA /* testing.cpp */; };
 		1C9D9E9121FC94E9003A84B9 /* stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C9D9E9021FC94E9003A84B9 /* stack.cpp */; };
 		1CA54B0C21FA071B0053B047 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B0B21FA071B0053B047 /* main.cpp */; };
 		1CA54B1421FA0A0D0053B047 /* globalVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B1321FA0A0D0053B047 /* globalVar.cpp */; };
@@ -31,7 +30,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1C62240C2204A22D00E305CA /* testing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testing.cpp; sourceTree = "<group>"; };
 		1C9D9E9021FC94E9003A84B9 /* stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stack.cpp; sourceTree = "<group>"; };
 		1CA54B0821FA071B0053B047 /* SATsolver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SATsolver; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA54B0B21FA071B0053B047 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 				1C9D9E9021FC94E9003A84B9 /* stack.cpp */,
 				1CDBA8B12203166D00EC8B75 /* display.cpp */,
 				1CDBA8B322031AB900EC8B75 /* timeCal.cpp */,
-				1C62240C2204A22D00E305CA /* testing.cpp */,
 			);
 			path = SATsolver;
 			sourceTree = "<group>";
@@ -152,7 +149,6 @@
 				1CDBA8B22203166D00EC8B75 /* display.cpp in Sources */,
 				1C9D9E9121FC94E9003A84B9 /* stack.cpp in Sources */,
 				1CA54B1621FA0A9B0053B047 /* fileIO.cpp in Sources */,
-				1C62240D2204A22D00E305CA /* testing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
