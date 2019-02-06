@@ -65,15 +65,16 @@ List pop(void) {
 }
 
 /*
- * 函数名称: stackDestroy
+ * 函数名称: clean
  * 接受参数: void
- * 函数功能: 销毁链式堆栈top
+ * 函数功能: 销毁链式堆栈top, 并释放堆栈中存放的每一个List的空间
  * 返回值: void
  */
-void stackDestroy(void) {
+void clean(void) {
     Stack del;
     while (top->next) {
         del = top;
+        listDestroy(del->data);
         top = top->next;
         free(del);
     }

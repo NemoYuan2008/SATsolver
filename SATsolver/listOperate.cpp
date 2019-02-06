@@ -91,19 +91,8 @@ void listCopy(List & dest, const List src) {
  * 返回值: void
  */
 void listDestroy(List & delHead) {
-    List clauseTail, literalTail;  //尾指针
-    while (delHead->nextClause) {   //从第一个子句开始销毁每一个子句
-        clauseTail = delHead->nextClause;
-        while (clauseTail->nextLiteral) {   //从第一个文字开始销毁每一个文字
-            literalTail = clauseTail->nextLiteral;
-            clauseTail->nextLiteral = literalTail->nextLiteral;
-            free(literalTail);
-            literalTail = NULL;
-        }
-        delHead->nextClause = clauseTail->nextClause;
-        free(clauseTail);
-        clauseTail = NULL;
-    }
+    while (delHead->nextClause)
+        clauseDelete(delHead);
     free(delHead);
     delHead = NULL;
 }
@@ -132,6 +121,8 @@ void clauseInsert(int x) {
 void clauseDelete(List & prev) {
     List del = prev->nextClause;    //待删除的节点
     prev->nextClause = del->nextClause;
+    while (del->nextLiteral)        //删除del的每一个文字
+        literalDelete(del);
     free(del);
     del = NULL;
     clauseCount--;      //当前子句数量减1

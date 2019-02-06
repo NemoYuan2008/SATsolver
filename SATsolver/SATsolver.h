@@ -66,7 +66,7 @@ void stackInit(void);                           //stack.cpp
 bool stackEmpty(void);                          //stack.cpp
 void push(List backup, int x, bool backTrack);  //stack.cpp
 List pop(void);                                 //stack.cpp
-void stackDestroy(void);                        //stack.cpp
+void clean(void);                        //stack.cpp
 void displayMenu(void);                         //display.cpp
 void displayResult(bool solved);                //display.cpp
 void timeCal(clock_t t1, clock_t t2);           //timeCal.cpp

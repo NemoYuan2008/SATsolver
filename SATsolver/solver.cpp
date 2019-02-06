@@ -52,8 +52,10 @@ bool DPLL(void) {
             }
         } else {    //化简后没有空子句
             backTrack = false;
-            if (satisfied())
+            if (satisfied()) {
+                listDestroy(head);
                 return true;
+            }
         }
     }//while
 }//DPLL

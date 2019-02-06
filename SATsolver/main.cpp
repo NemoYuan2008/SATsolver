@@ -27,21 +27,22 @@ int main(void) {
                 t1 = clock();
                 solved = DPLL();
                 t2 = clock();
+                clean();
                 timeCal(t1, t2);
                 displayResult(solved);
                 fileOut(solved);
-                printf("按任意键继续...");
+                printf("按[enter]键继续...");
                 getchar();getchar();
                 break;
             case 2:
                 printf("数独部分待完成!\n");
-                printf("按任意键继续...");
+                printf("按[enter]键继续...");
                 getchar();getchar();
                 break;
             case 0:
                 break;
             default:
-                printf("输入错误, 按任意键继续...");
+                printf("输入错误, 按[enter]键继续...");
                 getchar();getchar();
                 break;
         }
