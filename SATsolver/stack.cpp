@@ -8,7 +8,6 @@
 //  堆栈操作模块
 //
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "SATsolver.h"
 

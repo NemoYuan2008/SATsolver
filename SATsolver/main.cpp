@@ -35,7 +35,19 @@ int main(void) {
                 getchar();getchar();
                 break;
             case 2:
-                printf("数独部分待完成!\n");
+                sudokuIn();
+                cnfOut();
+                fileIn();
+                listCreate();
+                stackInit();
+                t1 = clock();
+                solved = DPLL();
+                t2 = clock();
+                clean();
+                timeCal(t1, t2);
+                displayResult(solved);
+                sudokuFill();
+                displaySudoku();
                 printf("按[enter]键继续...");
                 getchar();getchar();
                 break;

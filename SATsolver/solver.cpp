@@ -8,7 +8,6 @@
 //  求解器核心模块
 //
 
-#include <stdio.h>
 #include "SATsolver.h"
 
 /*

@@ -44,11 +44,13 @@ extern int clauseCount;
 extern int boolCount;
 extern bool * value;
 extern unsigned timeUsed;
+extern int sudoku[9][9];
 
 /* 函数原型 */
 void fileIn(void);                              //fileIO.cpp
 void init(void);                                //fileIO.cpp
 void fileOut(bool solved);                      //fileIO.cpp
+void sudokuIn(void);
 void listCreate(void);                          //listOperate.cpp
 void listCopy(List & dest, const List src);     //listOperate.cpp
 void listDestroy(List & delHead);               //listOperate.cpp
@@ -69,6 +71,11 @@ List pop(void);                                 //stack.cpp
 void clean(void);                        //stack.cpp
 void displayMenu(void);                         //display.cpp
 void displayResult(bool solved);                //display.cpp
+void displaySudoku(void);
 void timeCal(clock_t t1, clock_t t2);           //timeCal.cpp
+void cnfOut(void);
+void sudokuFill(void);
+
+void printList(List printHead);
 
 #endif /* SATsolver_h */

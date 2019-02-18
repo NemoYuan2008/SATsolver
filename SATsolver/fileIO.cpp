@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "SATsolver.h"
 
 /*
@@ -73,4 +74,20 @@ void fileOut(bool solved) {
     fprintf(fp, "\nt %u\n", timeUsed);
     fclose(fp);
     printf("结果已经成功写入到文件%s中\n", fileName);
+}
+
+
+void sudokuIn(void) {
+    char ch;
+    printf("输入要读取的数独文件:");
+    scanf("%s", fileName);
+    fp = fopen(fileName, "r");
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            ch = getc(fp);
+            sudoku[i][j] = isnumber(ch) ? -(ch-'0') : 0;
+            getc(fp);
+        }
+    }
+    fclose(fp);
 }

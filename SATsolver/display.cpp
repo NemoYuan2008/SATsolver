@@ -42,3 +42,31 @@ void displayResult(bool solved) {
     }
     printf("DPLL过程用时:%u ms\n", timeUsed);
 }
+
+void printList(List printHead) {
+    List clauseTail, literalTail;
+    clauseTail = printHead;
+    while (clauseTail->nextClause) {
+        clauseTail = clauseTail->nextClause;
+        literalTail = clauseTail;
+        while (literalTail->nextLiteral) {
+            literalTail = literalTail->nextLiteral;
+            printf("%d ", literalTail->literal);
+        }
+        printf("0\n");
+    }
+    printf("\n");
+}
+
+void displaySudoku(void) {
+    int x, y;
+    for (x = 0; x < 9;  x++) {
+        for (y = 0; y < 9; y++) {
+            if (sudoku[x][y])
+                printf("%d ", sudoku[x][y] > 0 ? sudoku[x][y] : -sudoku[x][y]);
+            else
+                printf(". ");
+        }
+        putchar('\n');
+    }
+}
