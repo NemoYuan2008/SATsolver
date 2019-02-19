@@ -25,6 +25,16 @@ void displayMenu(void) {
     printf("\n请选择:");
 }
 
+void cnfVerify(void) {
+    int op;
+    printf("cnf解析完成!是否需要验证?\n[0:不验证/1:验证]:");
+    scanf("%d", &op);
+    if (op) {
+        printf("读入的cnf如下:\n");
+        printList(head);
+    }
+}
+
 /*
  * 函数名称: displayResult
  * 接受参数: 指示是否有解的布尔值solved
@@ -43,6 +53,12 @@ void displayResult(bool solved) {
     printf("DPLL过程用时:%u ms\n", timeUsed);
 }
 
+/*
+ * 函数名称: printList
+ * 接受参数: void
+ * 函数功能: 打印当前的cnf范式
+ * 返回值: void
+ */
 void printList(List printHead) {
     List clauseTail, literalTail;
     clauseTail = printHead;
@@ -58,6 +74,12 @@ void printList(List printHead) {
     printf("\n");
 }
 
+/*
+ * 函数名称: displaySudoku
+ * 接受参数: void
+ * 函数功能: 打印当前的数独
+ * 返回值: void
+ */
 void displaySudoku(void) {
     int x, y;
     for (x = 0; x < 9;  x++) {

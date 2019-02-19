@@ -21,7 +21,6 @@
 void listCreate(void) {
     List clauseTail, literalTail;   //尾指针
     int literal;                    //临时存放从文件中输入的子句的值
-    init();                         //先进行初始化
     if ( !( head = (List)malloc(sizeof(LNode)) ) ) {
         printf("内存分配失败!\n");
         exit(EXIT_FAILURE);

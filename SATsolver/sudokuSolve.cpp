@@ -117,6 +117,7 @@ void cnfOut(void) {
     fprintf(fp, "c cnf generated from sudoku\n");
     fprintf(fp, "p cnf 889 %d\n", clauseCount);
     fclose(fp);
+    printf("cnf已生成!已保存在/Users/yuan/sudoku.cnf\n");
 }
 
 /*
@@ -131,5 +132,13 @@ void sudokuFill(void) {
             continue;
         if (value[i-1])
             sudoku[i/100][(i/10)%10] = i%10;
+    }
+}
+
+void sudokuClear(void) {
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            sudoku[i][j] = 0;
+        }
     }
 }

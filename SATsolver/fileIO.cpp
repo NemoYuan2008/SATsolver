@@ -27,7 +27,6 @@ void fileIn(void) {
         fprintf(stderr, "文件打开失败!\n");
         exit(EXIT_FAILURE);
     }
-    printf("文件打开成功!\n正在求解...\n");
 }
 
 /*
@@ -37,6 +36,7 @@ void fileIn(void) {
  * 返回值: void
  */
 void init(void) {
+    fileIn();
     char ch;
     while ( (ch = getc(fp)) == 'c') {
         while( (ch = getc(fp)) != '\n')
@@ -46,7 +46,9 @@ void init(void) {
     fscanf(fp, "%d", &boolCount);    //p后的第1个数值是布尔变元数量
     fscanf(fp, "%d", &clauseCount);  //p后的第2个数值是子句数量
     
+    listCreate();
     value = (bool *)calloc(boolCount, sizeof(bool));    //为value分配空间
+    stackInit();
 }
 
 /*

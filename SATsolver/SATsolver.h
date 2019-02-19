@@ -70,12 +70,17 @@ void push(List backup, int x, bool backTrack);  //stack.cpp
 List pop(void);                                 //stack.cpp
 void clean(void);                        //stack.cpp
 void displayMenu(void);                         //display.cpp
+void cnfVerify(void);
 void displayResult(bool solved);                //display.cpp
+void printList(List printHead);
 void displaySudoku(void);
 void timeCal(clock_t t1, clock_t t2);           //timeCal.cpp
 void cnfOut(void);
 void sudokuFill(void);
 
-void printList(List printHead);
+void play(void);
+bool correct(int a, int b, int x);
+bool full(void);
+void answer(void);
 
 #endif /* SATsolver_h */
