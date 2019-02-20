@@ -12,15 +12,23 @@
 #include <stdlib.h>
 #include "SATsolver.h"
 
+/*
+ * 函数名称: play
+ * 接受参数: void
+ * 函数功能: 玩数独
+ * 返回值: void
+ */
 void play(void) {
     int line, row, num;
-    while (!full()) {
+    while (!isFull()) {
         displaySudoku();
         printf("请输入行和列, 若选择的格子已经有填入的值, 将会删除这个值\n");
         printf("选择行[1-9], 输入0查看答案:");
         scanf("%d", &line);
         if (!line) {
             answer();
+            printf("你输了!答案为:\n");
+            displaySudoku();
             return;
         }
         if (line > 9 || line < 1) {
@@ -57,6 +65,12 @@ void play(void) {
     printf("恭喜你!已完成!\n");
 }
 
+/*
+ * 函数名称: correct
+ * 接受参数: 行数a, 列数b, 1-9的整数x
+ * 函数功能: 判断sudoku[a][b]是否可以为x
+ * 返回值: 若可以返回true, 否则返回false
+ */
 bool correct(int a, int b, int x) {
     //检测行有无重复
     for (int i = 0; i < 9; i++) {
@@ -76,16 +90,22 @@ bool correct(int a, int b, int x) {
     int m = a/3, n = b/3;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            if (m+i == a && n+j == b)
+            if (3*m + i == a && 3*n + j == b)
                 continue;
-            if (abs(sudoku[m+i][n+j]) == x)
+            if (abs(sudoku[3*m+i][3*n+j]) == x)
                 return false;
         }
     }
     return true;
 }
 
-bool full(void) {
+/*
+ * 函数名称: isFull
+ * 接受参数: void
+ * 函数功能: 判断数独是否已经填满
+ * 返回值: 若是返回true, 否则返回false
+ */
+bool isFull(void) {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
             if (!sudoku[i][j])
@@ -93,14 +113,4 @@ bool full(void) {
         }
     }
     return true;
-}
-
-void answer(void) {
-    cnfOut();
-    init();
-    DPLL();
-    sudokuFill();
-    printf("答案为:\n");
-    displaySudoku();
-    clean();
 }

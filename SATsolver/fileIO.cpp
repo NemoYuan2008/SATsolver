@@ -15,15 +15,14 @@
 #include "SATsolver.h"
 
 /*
- * 函数名称: fileIn
- * 接受参数: void
- * 函数功能: 用文件指针fp打开用户指定的文件
+ * 函数名称: fileOpen
+ * 接受参数: bool write
+ * 函数功能: 用文件指针fp打开用户指定的文件, 若write为真则为w模式, 否则为r模式
  * 返回值: void
  */
-void fileIn(void) {
-    printf("输入要读取的cnf文件:");
-    scanf("%s", fileName);
-    if ( !(fp = fopen(fileName, "r")) ) {
+void fileOpen(bool write) {
+    fp = write ? fopen(fileName, "w") : fopen(fileName, "r");
+    if (!fp) {
         fprintf(stderr, "文件打开失败!\n");
         exit(EXIT_FAILURE);
     }
@@ -32,11 +31,15 @@ void fileIn(void) {
 /*
  * 函数名称: init
  * 接受参数: void
- * 函数功能: 进行初始化, 弃去文件中没有用的字符, 为cnf的存储做准备
+ * 函数功能: 进行初始化, 为DPLL做准备
  * 返回值: void
  */
-void init(void) {
-    fileIn();
+void init(bool sudoku) {
+    if (!sudoku) {
+        printf("输入要读取的cnf文件:");
+        scanf("%s", fileName);
+    }
+    fileOpen(0);
     char ch;
     while ( (ch = getc(fp)) == 'c') {
         while( (ch = getc(fp)) != '\n')
@@ -59,11 +62,7 @@ void init(void) {
  */
 void fileOut(bool solved) {
     strcat(fileName, ".res");   //输出保存在后缀.res的同名文件中
-    fp = fopen(fileName, "w");
-    if (!fp) {
-        fprintf(stderr, "文件写入失败!\n");
-        exit(EXIT_FAILURE);
-    }
+    fileOpen(1);
     fprintf(fp, "s ");
     if (solved) {
         fprintf(fp, "1\n");

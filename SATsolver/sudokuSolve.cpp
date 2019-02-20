@@ -9,6 +9,7 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "SATsolver.h"
 
 #define boolGen(a, b, c) (100*(a) + 10*(b) + (c))
@@ -21,7 +22,9 @@
  */
 void cnfOut(void) {
     clauseCount = 0;
-    fp = fopen("/Users/yuan/sudoku.cnf", "w");
+    printf("输入要保存数独对应的cnf的路径:");
+    scanf("%s", fileName);
+    fileOpen(1);
     //占位
     fprintf(fp, "c cnf generated from sudoku\n");
     fprintf(fp, "p cnf 889       ");
@@ -117,7 +120,7 @@ void cnfOut(void) {
     fprintf(fp, "c cnf generated from sudoku\n");
     fprintf(fp, "p cnf 889 %d\n", clauseCount);
     fclose(fp);
-    printf("cnf已生成!已保存在/Users/yuan/sudoku.cnf\n");
+    printf("cnf已生成!已保存在%s\n", fileName);
 }
 
 /*
@@ -135,6 +138,26 @@ void sudokuFill(void) {
     }
 }
 
+/*
+ * 函数名称: answer
+ * 接受参数: void
+ * 函数功能: 求出数独的答案, 保存在sudoku中
+ * 返回值: void
+ */
+void answer(void) {
+    cnfOut();
+    init(1);
+    DPLL();
+    sudokuFill();
+    clean();
+}
+
+/*
+ * 函数名称: sudokuClear
+ * 接受参数: void
+ * 函数功能: 将数独清空
+ * 返回值: void
+ */
 void sudokuClear(void) {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {

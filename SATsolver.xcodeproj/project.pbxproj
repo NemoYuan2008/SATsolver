@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0EF7F4221CD718005A4FAD /* sudokuGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C0EF7F3221CD718005A4FAD /* sudokuGen.cpp */; };
 		1C9D9E9121FC94E9003A84B9 /* stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C9D9E9021FC94E9003A84B9 /* stack.cpp */; };
 		1CA54B0C21FA071B0053B047 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B0B21FA071B0053B047 /* main.cpp */; };
 		1CA54B1421FA0A0D0053B047 /* globalVar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA54B1321FA0A0D0053B047 /* globalVar.cpp */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C0EF7F3221CD718005A4FAD /* sudokuGen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sudokuGen.cpp; sourceTree = "<group>"; };
 		1C9D9E9021FC94E9003A84B9 /* stack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stack.cpp; sourceTree = "<group>"; };
 		1CA54B0821FA071B0053B047 /* SATsolver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SATsolver; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA54B0B21FA071B0053B047 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				1CDBA8B322031AB900EC8B75 /* timeCal.cpp */,
 				1CAC075A220D6F2D00752959 /* sudokuSolve.cpp */,
 				1CAA2C74221B861F0019EE28 /* sudokuPlay.cpp */,
+				1C0EF7F3221CD718005A4FAD /* sudokuGen.cpp */,
 			);
 			path = SATsolver;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				1CA54B1821FA0F0F0053B047 /* listOperate.cpp in Sources */,
 				1CA54B1421FA0A0D0053B047 /* globalVar.cpp in Sources */,
 				1CDBA8B422031AB900EC8B75 /* timeCal.cpp in Sources */,
+				1C0EF7F4221CD718005A4FAD /* sudokuGen.cpp in Sources */,
 				1CA54B0C21FA071B0053B047 /* main.cpp in Sources */,
 				1CDBA8B22203166D00EC8B75 /* display.cpp in Sources */,
 				1C9D9E9121FC94E9003A84B9 /* stack.cpp in Sources */,

@@ -20,11 +20,18 @@
 void displayMenu(void) {
     printf("----主菜单----\n");
     printf("1: 求解SAT问题\n");
-    printf("2: 数独\n");
+    printf("2: 数独(读取文件)\n");
+    printf("3: 数独(程序生成)\n");
     printf("0: 退出\n");
     printf("\n请选择:");
 }
 
+/*
+ * 函数名称: cnfVerify
+ * 接受参数: void
+ * 函数功能: 提示用户并验证cnf
+ * 返回值: void
+ */
 void cnfVerify(void) {
     int op;
     printf("cnf解析完成!是否需要验证?\n[0:不验证/1:验证]:");

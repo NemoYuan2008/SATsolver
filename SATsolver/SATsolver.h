@@ -47,8 +47,8 @@ extern unsigned timeUsed;
 extern int sudoku[9][9];
 
 /* 函数原型 */
-void fileIn(void);                              //fileIO.cpp
-void init(void);                                //fileIO.cpp
+void fileOpen(bool write);                              //fileIO.cpp
+void init(bool sudoku);                                //fileIO.cpp
 void fileOut(bool solved);                      //fileIO.cpp
 void sudokuIn(void);
 void listCreate(void);                          //listOperate.cpp
@@ -77,10 +77,12 @@ void displaySudoku(void);
 void timeCal(clock_t t1, clock_t t2);           //timeCal.cpp
 void cnfOut(void);
 void sudokuFill(void);
-
+void answer(void);
+void sudokuClear(void);
 void play(void);
 bool correct(int a, int b, int x);
-bool full(void);
-void answer(void);
+bool isFull(void);
+int randDigit(void);
+void sudokuGenerate(void);
 
 #endif /* SATsolver_h */

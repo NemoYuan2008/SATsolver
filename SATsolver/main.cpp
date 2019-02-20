@@ -21,21 +21,27 @@ int main(void) {
         scanf("%d", &op);
         switch (op) {
             case 1:
-                init();
+                init(0);
                 cnfVerify();
                 printf("正在求解...\n");
                 t1 = clock();
                 solved = DPLL();
                 t2 = clock();
                 clean();
-                displayResult(solved);
                 timeCal(t1, t2);
+                displayResult(solved);
                 fileOut(solved);
                 printf("按[enter]键继续...");
                 getchar();getchar();
                 break;
             case 2:
                 sudokuIn();
+                play();
+                printf("按[enter]键继续...");
+                getchar();getchar();
+                break;
+            case 3:
+                sudokuGenerate();
                 play();
                 printf("按[enter]键继续...");
                 getchar();getchar();
