@@ -9,6 +9,7 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include "SATsolver.h"
 
@@ -17,6 +18,7 @@ int main(void) {
     bool solved;    //指示是否求解成功
     clock_t t1, t2;
     while (op) {
+        system("clear");
         displayMenu();
         scanf("%d", &op);
         switch (op) {

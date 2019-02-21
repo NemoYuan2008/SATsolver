@@ -21,6 +21,7 @@
 void play(void) {
     int line, row, num;
     while (!isFull()) {
+        system("clear");
         displaySudoku();
         printf("请输入行和列, 若选择的格子已经有填入的值, 将会删除这个值\n");
         printf("选择行[1-9], 输入0查看答案:");
@@ -33,6 +34,7 @@ void play(void) {
         }
         if (line > 9 || line < 1) {
             printf("输入不正确, 请重新输入!\n\n");
+            printf("按[enter]键继续...");
             continue;
         }
         
@@ -40,17 +42,23 @@ void play(void) {
         scanf("%d", &row);
         if (row > 9 || row < 1) {
             printf("输入不正确, 请重新输入!\n\n");
+            printf("按[enter]键继续...");
+            getchar(); getchar();
             continue;
         }
         
         if (sudoku[line-1][row-1] < 0) {
             printf("第%d行第%d列已经有数字了!\n\n", line, row);
+            printf("按[enter]键继续...");
+            getchar(); getchar();
             continue;
         }
         else if (sudoku[line-1][row-1] > 0) {
             printf("第%d行第%d列已经填了数字%d, 已删除\n\n", line, row,
                    sudoku[line-1][row-1]);
             sudoku[line-1][row-1] = 0;
+            printf("按[enter]键继续...");
+            getchar(); getchar();
             continue;
         }
         printf("输入数字[0-9]:");
@@ -61,6 +69,8 @@ void play(void) {
         } else {
             printf("第%d行第%d列不能填入数字%d!\n\n", line, row, num);
         }
+        printf("按[enter]键继续...");
+        getchar(); getchar();
     }
     printf("恭喜你!已完成!\n");
 }
