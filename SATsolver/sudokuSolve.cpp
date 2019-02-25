@@ -10,20 +10,25 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "SATsolver.h"
 
 #define boolGen(a, b, c) (100*(a) + 10*(b) + (c))
 
 /*
  * 函数名称: cnfOut
- * 接受参数: void
+ * 接受参数: generate, 指示当前是否在生成数独
  * 函数功能: 将数独转化为cnf并输出到文件中
  * 返回值: void
  */
-void cnfOut(void) {
+void cnfOut(bool generate) {
     clauseCount = 0;
-    printf("输入要保存数独对应的cnf的路径:");
-    scanf("%s", fileName);
+    if (generate) {
+        strcpy(fileName, "generate.cnf");
+    } else {
+        printf("输入要保存数独对应的cnf的路径:");
+        scanf("%s", fileName);
+    }
     fileOpen(1);
     //占位
     fprintf(fp, "c cnf generated from sudoku\n");
@@ -120,7 +125,8 @@ void cnfOut(void) {
     fprintf(fp, "c cnf generated from sudoku\n");
     fprintf(fp, "p cnf 889 %d\n", clauseCount);
     fclose(fp);
-    printf("cnf已生成!已保存在%s\n", fileName);
+    if (!generate)
+        printf("cnf已生成!已保存在%s\n", fileName);
 }
 
 /*
@@ -140,12 +146,12 @@ void sudokuFill(void) {
 
 /*
  * 函数名称: answer
- * 接受参数: void
+ * 接受参数: generate, 指示当前是否在生成数独
  * 函数功能: 求出数独的答案, 保存在sudoku中
  * 返回值: void
  */
-void answer(void) {
-    cnfOut();
+void answer(bool generate) {
+    cnfOut(generate);
     init(1);
     DPLL();
     sudokuFill();

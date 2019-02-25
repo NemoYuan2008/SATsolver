@@ -27,7 +27,7 @@ void play(void) {
         printf("选择行[1-9], 输入0查看答案:");
         scanf("%d", &line);
         if (!line) {
-            answer();
+            answer(0);
             printf("你输了!答案为:\n");
             displaySudoku();
             return;

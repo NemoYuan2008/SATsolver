@@ -75,9 +75,9 @@ void displayResult(bool solved);                //display.cpp
 void printList(List printHead);
 void displaySudoku(void);
 void timeCal(clock_t t1, clock_t t2);           //timeCal.cpp
-void cnfOut(void);
+void cnfOut(bool generate);
 void sudokuFill(void);
-void answer(void);
+void answer(bool generate);
 void sudokuClear(void);
 void play(void);
 bool correct(int a, int b, int x);
