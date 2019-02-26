@@ -56,7 +56,7 @@ void cnfOut(bool generate) {
     for (int x = 0; x < 9; x++) {
         for (int y = 0; y < 9; y++) {
             for (int z = 1; z <= 8; z++) {
-                for (int i = z + 1; i < 9; i++) {
+                for (int i = z + 1; i <= 9; i++) {
                     fprintf(fp, "%d %d 0\n", -boolGen(x, y, z),
                             -boolGen(x, y, i));
                     clauseCount++;

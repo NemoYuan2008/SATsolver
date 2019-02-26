@@ -38,6 +38,8 @@ bool DPLL(void) {
                 x = -x;                 //则改变决策变元的真值
                 backTrack = true;
             } else {                    //若发生冲突前是在回溯, 则需要
+                if (stackEmpty())
+                    return false;
                 while (top->backTrack) {//一直向前, 找到没有回溯过的节点
                     listDestroy(head);
                     head = pop();
@@ -144,3 +146,16 @@ bool simplify(int x) {
 int varDecide(void) {
     return head->nextClause->nextLiteral->literal;
 }
+
+//int varDecide(void) {
+//    List clauseTail, literalTail;
+//    clauseTail = head;
+//    while (clauseTail->nextClause) {
+//        clauseTail = clauseTail->nextClause;
+//    }
+//    literalTail = clauseTail;
+//    while (literalTail->nextLiteral) {
+//        literalTail = literalTail->nextLiteral;
+//    }
+//    return literalTail->literal;
+//}

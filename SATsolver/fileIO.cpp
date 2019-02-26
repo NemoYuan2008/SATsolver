@@ -65,8 +65,8 @@ void fileOut(bool solved) {
     fileOpen(1);
     fprintf(fp, "s ");
     if (solved) {
-        fprintf(fp, "1\n");
-        for (int i = 1; i < boolCount; i++) {
+        fprintf(fp, "1\nv ");
+        for (int i = 0; i < boolCount; i++) {
             fprintf(fp, "%d ", value[i] ? i : -i);
         }//for
     } else {
